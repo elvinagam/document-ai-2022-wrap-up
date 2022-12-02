@@ -30,7 +30,6 @@ Table of Contents
    * [Sequence-of-actions-under-the-hood](#sequence-of-actions-under-the-hood)
    * [LayoutLMv3](#layoutlmv3)
    * [Overview](#overview)
-
    * [Training-and-Inference](#training-and-inference)
    * [v1-v2-v3](#v1-v2-v3)
    * [Donut-LiLT](#donut-lilt)
@@ -141,7 +140,7 @@ This network adds the feature of image segmentation and instance segmentation. I
 3. Region ProposalNetwork + Binary Mask Classifier
 Currently, Mask R-CNNs also have different versions where it is improved to handle few edge case scenarios like in this paper.
 
-![Image]()
+![Image](https://github.com/elvinagam/document-ai-2022-wrap-up/blob/main/src/rcnn.png)
 ________________________________________________________________________________________________________________________________
 
 
@@ -231,7 +230,7 @@ One improvement from LayoutLmv1 was the usage of segment-cell level position emb
 
 ## v1-v2-v3
 
-![Benchmark]()
+![Benchmark](https://github.com/elvinagam/document-ai-2022-wrap-up/blob/main/src/benchmark.png)
 
 
 ## Donut-LiLT
