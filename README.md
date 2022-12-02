@@ -306,7 +306,9 @@ Even though there are tons of open-source Document AI products out there, as a c
 
 ## About
 
-Quick DocAI Overview from past 20 years to 2022
+Quick DocAI Overview from past 20 years to 2022 with detailed notes on papers:
+
+![img](https://github.com/elvinagam/document-ai-2022-wrap-up/blob/main/src/lylm.PNG)
 
 ## License
 
