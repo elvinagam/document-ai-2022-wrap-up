@@ -7,7 +7,7 @@
 [![CodeFactor](https://www.codefactor.io/repository/github/elvinagam/tesseract-ocr-aze/badge)](https://www.codefactor.io/repository/github/elvinagam/tesseract-ocr-aze)
 
 
-This notebook goes through how usual Document AI pipeline works, includes details about SOTA models and papers in the field, also some details regarding how in H2O.ai Document AI team we use it. Quick heads-up, this notebook is mostly for the purpose of quickly going through the doc ai field and briefly looking at the most recent works, their usage methods, how different they are to the current SOTA, license, etc. If further information is needed, please check the papers listed below.
+This notebook goes through how usual Document AI pipeline works, includes details about state-of-the-art models and papers in the field, also some details regarding how at H2O.ai Document AI team we use it. Quick heads-up, this notebook is mostly for the purpose of quickly going through the doc ai field and briefly looking at the most recent works, their usage, how different they are to the current SOTA, license, etc. If further information is needed, please check the papers listed below.
 
 Table of Contents
 =================
@@ -46,31 +46,33 @@ Document AI usually consists of several stages in a complex pipeline starting fr
 
 Overall idea of document ai is to take documents (in different formats such as, PDF, word, TIFF, etc) as input, and be able to identify corresponding data of interest. Usually pdf documents can be in 2 ways.
 
-PDFs with embedded text
-PDFs with non-embedded text
-Most common scenario is having both cases in a single pdf document. So, most complete pipeline is:
+* PDFs with embedded text
+
+* PDFs with non-embedded text
+
+Most common scenario is having both cases in a single pdf document. So, most complete pipeline covering both is:
 
 1. PDF Handling - After extracting the embedded text from the PDF file and saving it to the VIA file, each page is converted into PNG format
 
-2. OCR - each PNG file goes through OCR - in our case, DocTR which handles images, finds texts and corresponding tokens and saves it to the VIA file
+2. OCR - Each PNG file goes through OCR - in our case, DocTR which handles images, finds texts and corresponding tokens and saves it to the VIA file
 
-3. Labeling - for labeling, VGG Viewer is used which outputs labels, and bounding boxes for the targets that we are looking for
+3. Labeling - VGG Viewer is used which outputs labels, and bounding boxes for the targets that we are looking for
 
 4. Merge OCR + Labels - Right before the training, we merge the VIA files we have, which combines OCR tokens with labels and bounding boxes (coordinates)
 
 5. LayoutLM - LayoutLMv1 takes its own format for the training procedure and we train the LayoutLMv1 model againsts all the PDFs we had which had been labeled.
 
-6. Inference
+6. Inference - Making predictions on unseen data and later test with ground truth
 
-7. Postprocessing
+7. Postprocessing - Final touches and small improvements on detecting tables (with camelot) and convertion to json/csv from VIA 
 
 ## Document-Image-Token-Classification-Task
 
 Main task here consists of 2 parts.
 
-* First is detecting the right target in a document, recognizing it correctly which completes the OCR process
+* First is detecting the right target in a document & recognizing it correctly which completes the OCR process
 
-* Second is classfying those found targets into which labels they belong to which completes the LayoutLM process.
+* Second is classfying found targets into which labels they belong to. And this basically completes the LayoutLM stage.
 For the first stage, they are several OCR models like DocTR (which we use), EasyOCR, PaddlePaddle, TrOCR, etc.
 
 For the second stage, previously, BERT-like models were mainly used, However, considering the fact that BERT does not consider layout and visual information when classifying tokens, it was not performing really well. Right after adding the functionality of layout, visual information and both of these together, DocAI benchmarks currently sees 95% accuracy.
