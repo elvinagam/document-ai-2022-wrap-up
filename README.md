@@ -7,7 +7,7 @@
 [![CodeFactor](https://www.codefactor.io/repository/github/elvinagam/tesseract-ocr-aze/badge)](https://www.codefactor.io/repository/github/elvinagam/tesseract-ocr-aze)
 
 
-This notebook goes through how usual Document AI pipeline works, includes details about state-of-the-art models and papers in the field, also some details regarding how at H2O.ai Document AI team we use it. Quick heads-up, this notebook is mostly for the purpose of quickly going through the doc ai field and briefly looking at the most recent works, their usage, how different they are to the current SOTA, license, etc. If further information is needed, please check the papers listed below.
+This notebook goes through how the usual Document AI pipeline works, includes details about state-of-the-art models and papers in the field, and also some details regarding how Document AI can be perfectly handled. Quick heads-up, this notebook is mostly for the purpose of quickly going through the doc ai field and briefly looking at the most recent works, their usage, how different they are to the current SOTA, license, etc. If further information is needed, please check the papers listed below.
 
 Table of Contents
 =================
@@ -163,7 +163,7 @@ LayoutLM - As mentioned previously, the answer to WHY LAYOUTLM question is the f
 * Text
 * Image
 * Layout/location
-Original LayoutLM model uses Tesseract as its OCR model. However, we as Document AI team uses DocTR OCR model which is not covered in this notebook. Trained on
+Original LayoutLM model uses Tesseract as its OCR model. However,  DocTR OCR model is also an option which is not covered in this notebook. Trained on
 
 LayoutLM is pre-trained on the IIT-CDIP Test Collection of Tobacco documents, which contains more than 6 million scanned documents with 11 million scanned images.
 
